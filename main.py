@@ -11,7 +11,7 @@ session = Session()
 session.proxies = {'http': 'socks5://4eigmwpxxk-corp.mobile.res-country-RU-state-468898-city-468902-hold-session-session-6789438029dd2:Rzw43zL9SP460cqQ@138.201.49.224:9999'}  # Замените на свой
 
 vk_token = settings.vk_token
-vk = vk_api.VkApi(token = vk_token)
+vk = vk_api.VkApi(token = vk_token, session=session)
 
 EACH_NUM_POST = 20 
 OUR_ID = vk.method('users.get')
