@@ -4,7 +4,11 @@ import time
 import traceback
 import settings
 import random
+from requests import Session
 ts = time.time()
+
+session = Session()
+session.proxies = {'http': 'socks5://4eigmwpxxk-corp.mobile.res-country-RU-state-468898-city-468902-hold-session-session-6789438029dd2:Rzw43zL9SP460cqQ@138.201.49.224:9999'}  # Замените на свой
 
 vk_token = settings.vk_token
 vk = vk_api.VkApi(token = vk_token)
@@ -29,7 +33,7 @@ while True:
 				dt = datetime.datetime.now()
 
 				st = dt.strftime(dt.strftime("Day: %d/%m/%Y  time: %H:%M:%S"))
-				print(f'In group {group} created post at {st}', vk.method('wall.post', {'message': post_text[random.randint(0, 3)], 'owner_id':group, 'attachment': post_att[random.randint(0, 3)]}))
+				print(f'In group {group} created post at {st}', vk.method('wall.post', {'message': post_text[random.randint(0, len(post_text)-1)], 'owner_id':group, 'attachment': post_att[random.randint(0, len([post_att])-1)]}))
 				time.sleep (10)
 		except Exception as e:
 			erorr = str(traceback.format_exc())
